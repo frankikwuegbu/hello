@@ -2,11 +2,11 @@ import { useState } from 'react';
 // import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function EmployeeEdit(props) {
+function AddEmployee(props) {
   const [show, setShow] = useState(false);
 
-  const [name, setName] = useState(props.name);
-  const [role, setRole] = useState(props.role);
+  const [name, setName] = useState('');
+  const [role, setRole] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,9 +16,9 @@ function EmployeeEdit(props) {
         <button  
             variant="primary" 
             onClick={handleShow} 
-            className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+            className="block mx-auto border-1 m-2 border-purple-600 bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
         >
-            Update
+            + Add Employee
         </button>
         <Modal
             show={show}
@@ -27,7 +27,7 @@ function EmployeeEdit(props) {
             keyboard={false}
         >
             <Modal.Header closeButton>
-            <Modal.Title>Employee Details</Modal.Title>
+            <Modal.Title>Add Employee</Modal.Title>
             </Modal.Header>
             <Modal.Body>
             <form  
@@ -85,7 +85,7 @@ function EmployeeEdit(props) {
                     Close
                 </button>
                 <button form='editmodal' className="bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
-                    Confirm
+                    Add
                 </button>
             </Modal.Footer>
       </Modal>
@@ -93,4 +93,4 @@ function EmployeeEdit(props) {
   );
 }
 
-export default EmployeeEdit;
+export default AddEmployee;
