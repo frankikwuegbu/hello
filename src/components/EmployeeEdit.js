@@ -32,10 +32,7 @@ function EmployeeEdit(props) {
             <Modal.Body>
             <form  
                 onSubmit={(e) =>{
-                    handleClose();
                     e.preventDefault();
-                    console.log('inside edit employee');
-                    console.log(props.id, name, role);
                     props.updateEmployee(props.id, name, role);
                 }
             }
@@ -84,7 +81,10 @@ function EmployeeEdit(props) {
                 <button variant="secondary" onClick={handleClose} className="bg-slate-500 hover:bg-slate-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
                     Close
                 </button>
-                <button form='editmodal' className="bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
+                <button 
+                    form='editmodal' 
+                    onClick={handleClose}
+                    className="bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded">
                     Confirm
                 </button>
             </Modal.Footer>

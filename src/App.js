@@ -2,7 +2,9 @@ import './index.css';
 import Employee from './components/Employee'
 import { useState } from 'react';
 import AddEmployee from './components/AddEmployee';
-// import {v4 as uuidv4} from 'uuid';
+import EmployeeEdit from './components/EmployeeEdit';
+import Header from './components/Header';
+import {v4 as uuidv4} from 'uuid';
 
 function App() {
   const[role, setRole] = useState('N/A');
@@ -58,20 +60,32 @@ function App() {
     setEmployees(updatedEmployees)
   }
 
+  function newEmployee(name, role, img) {
+    const newEmployee = {
+      id: uuidv4(),
+      name: name,
+      role:role,
+      img: img,
+    };
+    setEmployees([...employees, newEmployee])
+  }
+
   const showEmployees = true;
   return (
-    <div className="App">
+    <div className="App bg-gray-500 min-h-screen">
+      <Header />
       {showEmployees ?
         <>
-        <input 
-          type='text'
-          onChange={(e) => {
-            console.log(e.target.value)
-            setRole(e.target.value)
-          }}
-        />
-          <div className='flex flex-wrap justify-center'>
+          <div className='flex flex-wrap justify-center my-2'>
             {employees.map((employee) => {
+              const employeeEdit = (
+                <EmployeeEdit
+                    id={employee.id} 
+                    name={employee.name} 
+                    role={employee.role} 
+                    updateEmployee={updateEmployee}
+                />
+              )
               return(
                 <Employee 
                   key={employee.id}
@@ -79,14 +93,14 @@ function App() {
                   name={employee.name}
                   role={employee.role}
                   img={employee.img}
-                  updateEmployee={updateEmployee}
+                  employeeEdit={employeeEdit}
                 />
               );
             }
             )
           }
           </div>
-          <AddEmployee />
+          <AddEmployee newEmployee={newEmployee} />
         </>
       :
         <p>access denied</p>
