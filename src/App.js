@@ -5,9 +5,10 @@ import AddEmployee from './components/AddEmployee';
 import EmployeeEdit from './components/EmployeeEdit';
 import Header from './components/Header';
 import Employees from './pages/Employees';
-import Dictionary from './components/Dictionary';
+import Dictionary from './pages/Dictionary';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
+import Definition from './pages/Definition';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path='/employees' element={<Employees />} />
           <Route path='/dictionary' element={<Dictionary />} />
+          <Route path='/definition' element={<Definition />} />
         </Routes>
       </Header>
     </BrowserRouter>
