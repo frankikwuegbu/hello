@@ -1,4 +1,5 @@
 import {v4 as uuidv4} from 'uuid';
+import { baseUrl } from '../shared';
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
@@ -6,8 +7,8 @@ export default function Customers() {
     const [customers, setCustomers] = useState();
 
     useEffect(() =>{
-        console.log("fetching...")
-        fetch("http://localhost:8000/api/customers/")
+        const url = baseUrl + "api/customers/";
+        fetch(url)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
